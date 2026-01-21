@@ -1,24 +1,44 @@
-name: DevOps Smart Health Pipeline
+name: Smart Health Monitor CI
 
 on:
   push:
     branches: [ "main" ]
+
   workflow_dispatch:
+
+  schedule:
+    - cron: "*/5 * * * *"   # Every 5 minutes
 
 jobs:
   health-check:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y bc
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y bc
 
-    - name: Give execute permission
-      run: chmod +x scripts/smart_health_check.sh
+      - name: Make script executable
+        run: chmod +x scripts/smart_health_check.sh
 
-    - name: Run health monitoring script
-      run: ./scripts/smart_health_check.sh
+      - name: Run Smart Health Check
+        run: ./scripts/smart_health_check.sh
 
+      # Auto-fail if ALERT found
+      - name: Check for ALERT in logs
+        run: |
+          if grep -i "ALERT" "$HOME/devops-lab/smart_health.log"; then
+            echo "ALERT detected in health check!"
+            exit 1
+          else
+            echo "No ALERT found. System healthy."
+          fi
+
+      #Upload logs as pipeline artifact
+      - name: Upload health log
+        uses: actions/upload-artifact@v4
+        with:
+          name: smart-health-log
+          path: $HOME/devops-lab/smart_health.log
