@@ -1,6 +1,11 @@
 #!/bin/bash
 
-LOGFILE=~/devops-lab/smart_health.log
+BASE_DIR="$HOME/devops-lab"
+LOGFILE="$BASE_DIR/smart_health.log"
+
+mkdir -p "$BASE_DIR"
+touch "$LOGFILE"
+
 DATE=$(date)
 HOST=$(hostname)
 
@@ -33,11 +38,10 @@ LOAD_LIMIT=1.50
 
 CHECK=$(echo "$CPU_LOAD > $LOAD_LIMIT" | bc)
 
-if [ $CHECK -eq 1 ]; then
+if [ "$CHECK" -eq 1 ]; then
     echo "[ALERT] High CPU load: $CPU_LOAD" | tee -a $LOGFILE
 else
     echo "[OK] CPU load normal: $CPU_LOAD" | tee -a $LOGFILE
 fi
 
 echo "" >> $LOGFILE
-
