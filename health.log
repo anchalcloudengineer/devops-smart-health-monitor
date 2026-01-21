@@ -1,0 +1,36 @@
+===================================
+Health Check: Wed Jan 21 06:29:54 UTC 2026
+===================================
+Hostname: DESKTOP-R9BIBD1
+ 06:29:54 up  2:08,  2 users,  load average: 0.00, 0.00, 0.00
+------ CPU Load ------
+top - 06:29:54 up  2:08,  2 users,  load average: 0.00, 0.00, 0.00
+Tasks:  29 total,   1 running,  28 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  4.3 sy,  0.0 ni, 95.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   1590.8 total,   1165.7 free,    356.9 used,    155.0 buff/cache     
+MiB Swap:   1024.0 total,   1024.0 free,      0.0 used.   1233.8 avail Mem 
+------ Memory ------
+               total        used        free      shared  buff/cache   available
+Mem:            1590         356        1165           3         154        1233
+Swap:           1024           0        1024
+------ Disk ------
+Filesystem      Size  Used Avail Use% Mounted on
+none            796M     0  796M   0% /usr/lib/modules/6.6.87.1-microsoft-standard-WSL2
+none            796M  4.0K  796M   1% /mnt/wsl
+drivers         101G   91G  9.3G  91% /usr/lib/wsl/drivers
+/dev/sdd       1007G  1.2G  955G   1% /
+none            796M   76K  796M   1% /mnt/wslg
+none            796M     0  796M   0% /usr/lib/wsl/lib
+rootfs          791M  2.7M  788M   1% /init
+none            796M  496K  795M   1% /run
+none            796M     0  796M   0% /run/lock
+none            796M     0  796M   0% /run/shm
+none            796M   76K  796M   1% /mnt/wslg/versions.txt
+none            796M   76K  796M   1% /mnt/wslg/doc
+C:\             101G   91G  9.3G  91% /mnt/c
+F:\             138G   42G   97G  31% /mnt/f
+tmpfs           796M   16K  796M   1% /run/user/0
+tmpfs           160M   16K  160M   1% /run/user/1001
+✔ Disk usage is normal: 1%
+✔ Memory is sufficient: 1164MB free
+
