@@ -41,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: smart-health-log
-          path: $HOME/devops-lab/smart_health.log
+          path: /home/runner/devops-lab/smart_health.log
