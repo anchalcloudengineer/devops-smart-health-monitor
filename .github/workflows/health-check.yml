@@ -1,0 +1,21 @@
+name: DevOps Smart Health Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Give execute permission
+      run: chmod +x scripts/smart_health_check.sh
+
+    - name: Run health monitoring script
+      run: ./scripts/smart_health_check.sh
+
